@@ -3,66 +3,66 @@
 
 @layer utilities {
 
-    // Generate spacing utilities from the scale map
+    // Spacing utilities generated from the scale map
     @each $key, $value in $spacing-scale {
         .m-#{$key} {
-            margin: $value !important;
+            margin: $value;
         }
 
         .mt-#{$key} {
-            margin-top: $value !important;
+            margin-top: $value;
         }
 
         .mb-#{$key} {
-            margin-bottom: $value !important;
+            margin-bottom: $value;
         }
 
         .ml-#{$key} {
-            margin-left: $value !important;
+            margin-left: $value;
         }
 
         .mr-#{$key} {
-            margin-right: $value !important;
+            margin-right: $value;
         }
 
         .mx-#{$key} {
-            margin-inline: $value !important;
+            margin-inline: $value;
         }
 
         .my-#{$key} {
-            margin-block: $value !important;
+            margin-block: $value;
         }
 
         .p-#{$key} {
-            padding: $value !important;
+            padding: $value;
         }
 
         .pt-#{$key} {
-            padding-top: $value !important;
+            padding-top: $value;
         }
 
         .pb-#{$key} {
-            padding-bottom: $value !important;
+            padding-bottom: $value;
         }
 
         .pl-#{$key} {
-            padding-left: $value !important;
+            padding-left: $value;
         }
 
         .pr-#{$key} {
-            padding-right: $value !important;
+            padding-right: $value;
         }
 
         .px-#{$key} {
-            padding-inline: $value !important;
+            padding-inline: $value;
         }
 
         .py-#{$key} {
-            padding-block: $value !important;
+            padding-block: $value;
         }
 
         .gap-#{$key} {
-            gap: $value !important;
+            gap: $value;
         }
     }
 

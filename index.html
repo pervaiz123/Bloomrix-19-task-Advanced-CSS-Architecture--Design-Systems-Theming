@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Design System — Component Library</title>
+    <title>Aurora Design System</title>
     <link rel="stylesheet" href="css/design-system.css" />
     <style>
       .demo-section {
@@ -22,7 +22,7 @@
       .demo-desc {
         color: var(--color-text-muted);
         font-size: 0.875rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 1.25rem;
       }
       .demo-row {
         display: flex;
@@ -48,6 +48,7 @@
         overflow-x: auto;
         margin-top: 0.75rem;
         color: var(--color-text-muted);
+        line-height: 1.5;
       }
       .site-header {
         position: sticky;
@@ -106,6 +107,7 @@
           <a href="#cards">Cards</a>
           <a href="#feedback">Feedback</a>
           <a href="#overlay">Overlay</a>
+          <a href="#responsive">Responsive</a>
         </nav>
         <button
           id="theme-toggle"
@@ -121,16 +123,16 @@
     <main class="container" style="padding-bottom: 4rem">
       <h1 class="heading-1 mb-2">Aurora Design System</h1>
       <p class="text-muted mb-8">
-        A production-ready component library built for consistency,
-        accessibility, and long-term maintainability across products.
+        Production-ready component library with design tokens, theming, and
+        documented usage patterns.
       </p>
 
       <!-- TOKENS -->
       <section id="tokens" class="demo-section">
         <h2 class="demo-title">Design Tokens</h2>
         <p class="demo-desc">
-          Foundational values that drive color, spacing, radius, and elevation
-          throughout the system.
+          CSS custom properties for color, spacing, radius and elevation. Change
+          theme to see values update at runtime.
         </p>
 
         <div class="demo-label">Color Palette</div>
@@ -221,48 +223,20 @@
           </div>
         </div>
 
-        <div class="demo-label">Surfaces</div>
-        <div class="demo-row mb-4">
-          <div
-            style="
-              padding: 1rem 1.5rem;
-              background: var(--color-background);
-              border: 1px solid var(--color-border);
-              border-radius: 0.5rem;
-            "
-          >
-            background
-          </div>
-          <div
-            style="
-              padding: 1rem 1.5rem;
-              background: var(--color-surface);
-              border: 1px solid var(--color-border);
-              border-radius: 0.5rem;
-            "
-          >
-            surface
-          </div>
-          <div
-            style="
-              padding: 1rem 1.5rem;
-              background: var(--color-surface-elevated);
-              border: 1px solid var(--color-border);
-              border-radius: 0.5rem;
-              box-shadow: var(--shadow-md);
-            "
-          >
-            elevated
-          </div>
+        <div class="demo-code">
+          --color-primary<br />
+          --color-secondary<br />
+          --color-accent<br />
+          --color-background / --color-surface<br />
+          --color-text / --color-text-muted<br />
+          --color-success / --color-warning / --color-danger / --color-info
         </div>
       </section>
 
       <!-- TYPOGRAPHY -->
       <section id="typography" class="demo-section">
         <h2 class="demo-title">Typography</h2>
-        <p class="demo-desc">
-          A clear type scale designed for hierarchy and readability.
-        </p>
+        <p class="demo-desc">Consistent type scale with semantic classes.</p>
 
         <div class="stack stack--sm">
           <h1 class="heading-1">Heading 1</h1>
@@ -271,30 +245,32 @@
           <h4 class="heading-4">Heading 4</h4>
           <h5 class="heading-5">Heading 5</h5>
           <h6 class="heading-6">Heading 6</h6>
-          <p class="body">
-            Body text provides the primary reading experience across interfaces
-            and documentation.
-          </p>
+          <p class="body">Body text provides the primary reading experience.</p>
           <p class="label">Label text</p>
-          <p class="caption">Caption text for secondary details</p>
-          <p class="text-muted">
-            Muted text for supporting information and metadata.
-          </p>
+          <p class="caption">Caption text</p>
+          <p class="text-muted">Muted text for secondary information.</p>
           <p><a href="#" class="link">Interactive link</a></p>
           <blockquote class="blockquote">
-            “Clarity and consistency form the foundation of every strong
-            interface.”
+            Clarity and consistency form the foundation of every strong
+            interface.
           </blockquote>
+        </div>
+
+        <div class="demo-code">
+          .heading-1 → .heading-6<br />
+          .body<br />
+          .label<br />
+          .caption<br />
+          .text-muted<br />
+          .link<br />
+          .blockquote
         </div>
       </section>
 
       <!-- BUTTONS -->
       <section id="buttons" class="demo-section">
         <h2 class="demo-title">Buttons</h2>
-        <p class="demo-desc">
-          Primary actions, secondary options, and status-driven variants with
-          size and state support.
-        </p>
+        <p class="demo-desc">Variants, sizes and interactive states.</p>
 
         <div class="demo-label">Variants</div>
         <div class="demo-row mb-4">
@@ -323,8 +299,14 @@
         </div>
 
         <div class="demo-code">
-          .btn .btn--primary .btn--md<br />.btn .btn--outline .btn--lg<br />.btn
-          .btn--danger .btn--sm .btn--loading
+          .btn .btn--primary .btn--md<br />
+          .btn .btn--secondary .btn--sm<br />
+          .btn .btn--outline .btn--lg<br />
+          .btn .btn--ghost<br />
+          .btn .btn--danger<br />
+          .btn .btn--success<br />
+          .btn .btn--loading<br />
+          disabled or .btn--disabled
         </div>
       </section>
 
@@ -332,7 +314,8 @@
       <section id="forms" class="demo-section">
         <h2 class="demo-title">Form Components</h2>
         <p class="demo-desc">
-          Complete set of inputs with validation states and accessible controls.
+          Text inputs, selects, checkboxes, radios, toggles and validation
+          states.
         </p>
 
         <div class="grid grid--cols-2">
@@ -345,11 +328,8 @@
                 id="input-text"
                 placeholder="Enter your name"
               />
-              <span class="form-hint"
-                >This name will appear on your profile</span
-              >
+              <span class="form-hint">Displayed on your profile</span>
             </div>
-
             <div class="form-group">
               <label class="form-label" for="input-email">Work email</label>
               <input
@@ -359,7 +339,6 @@
                 placeholder="name@company.com"
               />
             </div>
-
             <div class="form-group">
               <label class="form-label" for="input-password">Password</label>
               <input
@@ -369,7 +348,6 @@
                 placeholder="••••••••"
               />
             </div>
-
             <div class="form-group">
               <label class="form-label" for="input-error">Project name</label>
               <input
@@ -380,7 +358,6 @@
               />
               <span class="form-error">Project name is required</span>
             </div>
-
             <div class="form-group">
               <label class="form-label" for="input-success">Team handle</label>
               <input
@@ -398,10 +375,9 @@
               <textarea
                 class="textarea"
                 id="textarea"
-                placeholder="Describe the project goals…"
+                placeholder="Describe the project…"
               ></textarea>
             </div>
-
             <div class="form-group">
               <label class="form-label" for="select">Department</label>
               <select class="select" id="select">
@@ -409,10 +385,8 @@
                 <option>Product</option>
                 <option>Engineering</option>
                 <option>Design</option>
-                <option>Marketing</option>
               </select>
             </div>
-
             <div class="form-group">
               <span class="form-label">Preferences</span>
               <label class="checkbox"
@@ -422,7 +396,6 @@
                 ><input type="checkbox" /> Weekly digest</label
               >
             </div>
-
             <div class="form-group">
               <span class="form-label">Billing cycle</span>
               <label class="radio"
@@ -431,11 +404,7 @@
               <label class="radio"
                 ><input type="radio" name="plan" /> Yearly</label
               >
-              <label class="radio"
-                ><input type="radio" name="plan" /> Custom</label
-              >
             </div>
-
             <div class="form-group">
               <span class="form-label">Status</span>
               <label class="toggle">
@@ -448,14 +417,25 @@
             </div>
           </div>
         </div>
+
+        <div class="demo-code">
+          .form-group<br />
+          .form-label<br />
+          .form-hint / .form-error<br />
+          .input / .input--error / .input--success<br />
+          .textarea<br />
+          .select<br />
+          .checkbox<br />
+          .radio<br />
+          .toggle + .toggle__input + .toggle__track + .toggle__thumb +
+          .toggle__label
+        </div>
       </section>
 
       <!-- CARDS -->
       <section id="cards" class="demo-section">
         <h2 class="demo-title">Cards</h2>
-        <p class="demo-desc">
-          Flexible containers for content, profiles, metrics, and pricing.
-        </p>
+        <p class="demo-desc">Basic, profile, statistics and pricing cards.</p>
 
         <div class="grid grid--cols-3 mb-6">
           <div class="card">
@@ -465,8 +445,7 @@
             </div>
             <div class="card__body">
               <p class="body">
-                Track milestones, ownership, and delivery status across the
-                current release cycle.
+                Track milestones and delivery status across the current release.
               </p>
             </div>
             <div class="card__footer">
@@ -493,8 +472,7 @@
               <div class="card__name">Amina Khan</div>
               <div class="card__role">Senior Product Designer</div>
               <p class="card__bio">
-                Focused on design systems, accessibility, and cross-platform
-                consistency.
+                Design systems, accessibility and cross-platform consistency.
               </p>
               <div class="cluster mt-4" style="justify-content: center">
                 <button class="btn btn--primary btn--sm">Connect</button>
@@ -563,40 +541,48 @@
             </div>
           </div>
         </div>
+
+        <div class="demo-code">
+          .card<br />
+          .card__header / .card__body / .card__footer<br />
+          .card__title / .card__subtitle<br />
+          .card--profile<br />
+          .card--stat + .card__stat-value + .card__stat-label +
+          .card__stat-change<br />
+          .card--pricing + .card--featured<br />
+          .card__price / .card__features
+        </div>
       </section>
 
       <!-- FEEDBACK -->
       <section id="feedback" class="demo-section">
         <h2 class="demo-title">Alerts, Badges & Progress</h2>
-        <p class="demo-desc">
-          Status communication and progress indicators for user feedback.
-        </p>
+        <p class="demo-desc">Status communication and progress indicators.</p>
 
         <div class="demo-label">Alerts</div>
         <div class="stack mb-6">
           <div class="alert alert--info">
             <div class="alert__content">
               <div class="alert__title">Update available</div>
-              Version 2.4 is ready. Review the changelog before deploying.
+              Version 2.4 is ready for review.
             </div>
           </div>
           <div class="alert alert--success">
             <div class="alert__content">
               <div class="alert__title">Changes saved</div>
-              Your workspace settings have been updated successfully.
+              Workspace settings updated successfully.
             </div>
           </div>
           <div class="alert alert--warning">
             <div class="alert__content">
               <div class="alert__title">Approaching limit</div>
-              You have used 85% of your monthly API quota.
+              You have used 85% of your monthly quota.
             </div>
           </div>
           <div class="alert alert--danger">
             <div class="alert__content">
               <div class="alert__title">Payment failed</div>
-              We could not process the latest invoice. Please update your
-              billing method.
+              Please update your billing method.
             </div>
           </div>
         </div>
@@ -614,7 +600,7 @@
           <span class="badge badge--danger badge--dot"></span>
         </div>
 
-        <div class="demo-label">Progress bars</div>
+        <div class="demo-label">Progress</div>
         <div class="stack stack--sm" style="max-width: 24rem">
           <div class="progress">
             <div class="progress__bar" style="width: 35%"></div>
@@ -629,14 +615,23 @@
             <div class="progress__bar" style="width: 91%"></div>
           </div>
         </div>
+
+        <div class="demo-code">
+          .alert .alert--info / .alert--success / .alert--warning /
+          .alert--danger<br />
+          .alert__title / .alert__content<br />
+          .badge .badge--primary / .badge--success / .badge--outline /
+          .badge--count / .badge--dot<br />
+          .progress .progress__bar<br />
+          .progress--sm / .progress--lg<br />
+          .progress--success / .progress--warning / .progress--danger
+        </div>
       </section>
 
       <!-- OVERLAY -->
       <section id="overlay" class="demo-section">
         <h2 class="demo-title">Tooltips & Modal</h2>
-        <p class="demo-desc">
-          Contextual help and focused dialogs for critical actions.
-        </p>
+        <p class="demo-desc">Contextual help and focused dialogs.</p>
 
         <div class="demo-label">Tooltip</div>
         <div class="demo-row mb-6">
@@ -690,7 +685,7 @@
             <div class="modal__body">
               <p>
                 This project will be moved to the archive. You can restore it
-                later from the archive view.
+                later.
               </p>
             </div>
             <div class="modal__footer">
@@ -716,6 +711,48 @@
               </button>
             </div>
           </div>
+        </div>
+
+        <div class="demo-code">
+          .tooltip + .tooltip__content<br />
+          .modal + .is-open<br />
+          .modal__backdrop<br />
+          .modal__dialog<br />
+          .modal__header / .modal__title / .modal__close<br />
+          .modal__body<br />
+          .modal__footer
+        </div>
+      </section>
+
+      <!-- RESPONSIVE -->
+      <section id="responsive" class="demo-section">
+        <h2 class="demo-title">Responsive Strategy</h2>
+        <p class="demo-desc">
+          When to use container queries versus viewport media queries.
+        </p>
+
+        <div class="stack">
+          <p class="body">
+            <strong>Container queries</strong> are used on cards (<code
+              class="code"
+              >container-type: inline-size</code
+            >). They allow a component to adapt based on the width of its parent
+            container rather than the entire viewport. This is ideal for
+            reusable components that may appear in sidebars, modals, or
+            multi-column layouts.
+          </p>
+          <p class="body">
+            <strong>Viewport media queries</strong> (via the
+            <code class="code">respond-to</code> mixin) are used for page-level
+            layout decisions such as grid column counts and container
+            max-widths. These affect the overall structure of the page and are
+            more appropriate when the layout change should respond to the device
+            size.
+          </p>
+          <p class="body">
+            Rule of thumb: use container queries for component internals; use
+            media queries for page layout.
+          </p>
         </div>
       </section>
 
