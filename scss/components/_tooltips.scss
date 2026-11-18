@@ -1,0 +1,43 @@
+@use "../abstracts" as *;
+
+@layer components {
+    .tooltip {
+        position: relative;
+        display: inline-flex;
+
+        &__content {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(-0.5rem);
+            padding: spacing(1) spacing(2);
+            font-size: font-size(xs);
+            font-weight: 500;
+            color: var(--color-text-inverse);
+            background-color: var(--color-text);
+            border-radius: radius(sm);
+            white-space: nowrap;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-base), visibility var(--transition-base);
+            pointer-events: none;
+            z-index: 50;
+
+            &::after {
+                content: "";
+                position: absolute;
+                top: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                border: 5px solid transparent;
+                border-top-color: var(--color-text);
+            }
+        }
+
+        &:hover .tooltip__content,
+        &:focus-within .tooltip__content {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}

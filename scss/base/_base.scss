@@ -1,0 +1,15 @@
+@use "../abstracts" as *;
+
+@layer base {
+    :root {
+        --font-sans: #{ $font-sans };
+        --font-mono: #{ $font-mono };
+        --transition-base: #{ $transition-base };
+        --transition-slow: #{ $transition-slow };
+    }
+
+    ::selection {
+        background-color: var(--color-primary);
+        color: var(--color-primary-contrast);
+    }
+}

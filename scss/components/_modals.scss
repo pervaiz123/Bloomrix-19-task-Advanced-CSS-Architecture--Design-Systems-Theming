@@ -1,0 +1,92 @@
+@use "../abstracts" as *;
+
+@layer components {
+    .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: spacing(4);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity var(--transition-slow), visibility var(--transition-slow);
+
+        &.is-open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        &__backdrop {
+            position: absolute;
+            inset: 0;
+            background-color: rgb(0 0 0 / 0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        &__dialog {
+            position: relative;
+            width: 100%;
+            max-width: 28rem;
+            background-color: var(--color-surface);
+            border-radius: radius(xl);
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--color-border);
+            max-height: 90vh;
+            overflow: auto;
+            transform: scale(0.95);
+            transition: transform var(--transition-slow);
+        }
+
+        &.is-open .modal__dialog {
+            transform: scale(1);
+        }
+
+        &__header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: spacing(4) spacing(5);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        &__title {
+            font-size: font-size(lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        &__close {
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: radius(md);
+            color: var(--color-text-muted);
+            transition: background-color var(--transition-base), color var(--transition-base);
+
+            &:hover {
+                background-color: var(--color-background);
+                color: var(--color-text);
+            }
+        }
+
+        &__body {
+            padding: spacing(5);
+            color: var(--color-text);
+            font-size: font-size(sm);
+            line-height: 1.6;
+        }
+
+        &__footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: spacing(2);
+            padding: spacing(4) spacing(5);
+            border-top: 1px solid var(--color-border);
+        }
+    }
+}

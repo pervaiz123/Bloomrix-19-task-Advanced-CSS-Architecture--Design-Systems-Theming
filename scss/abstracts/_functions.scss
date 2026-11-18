@@ -1,0 +1,29 @@
+@use "sass:map";
+@use "variables" as *;
+
+// Get spacing value from scale
+@function spacing($key) {
+    @if map.has-key($spacing-scale, $key) {
+        @return map.get($spacing-scale, $key);
+    }
+
+    @error "Unknown spacing key `#{$key}`.";
+}
+
+// Get font size from scale
+@function font-size($key) {
+    @if map.has-key($font-sizes, $key) {
+        @return map.get($font-sizes, $key);
+    }
+
+    @error "Unknown font-size key `#{$key}`.";
+}
+
+// Get radius from scale
+@function radius($key) {
+    @if map.has-key($radii, $key) {
+        @return map.get($radii, $key);
+    }
+
+    @error "Unknown radius key `#{$key}`.";
+}

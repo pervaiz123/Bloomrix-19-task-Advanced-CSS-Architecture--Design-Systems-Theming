@@ -1,0 +1,170 @@
+@use "../abstracts" as *;
+
+@layer components {
+    .card {
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: radius(lg);
+        box-shadow: var(--shadow-sm);
+        overflow: hidden;
+        container-type: inline-size;
+
+        &__header {
+            padding: spacing(4) spacing(5);
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        &__body {
+            padding: spacing(5);
+        }
+
+        &__footer {
+            padding: spacing(4) spacing(5);
+            border-top: 1px solid var(--color-border);
+            background-color: var(--color-background);
+        }
+
+        &__title {
+            font-size: font-size(lg);
+            font-weight: 600;
+            color: var(--color-text);
+            margin: 0;
+        }
+
+        &__subtitle {
+            font-size: font-size(sm);
+            color: var(--color-text-muted);
+            margin-top: spacing(1);
+        }
+    }
+
+    // Profile card
+    .card--profile {
+        text-align: center;
+
+        .card__avatar {
+            width: 5rem;
+            height: 5rem;
+            border-radius: radius(full);
+            object-fit: cover;
+            margin: 0 auto spacing(3);
+            border: 3px solid var(--color-border);
+        }
+
+        .card__name {
+            font-size: font-size(xl);
+            font-weight: 600;
+            color: var(--color-text);
+        }
+
+        .card__role {
+            font-size: font-size(sm);
+            color: var(--color-text-muted);
+            margin-top: spacing(1);
+        }
+
+        .card__bio {
+            font-size: font-size(sm);
+            color: var(--color-text-muted);
+            margin-top: spacing(3);
+            line-height: 1.5;
+        }
+    }
+
+    // Stats card
+    .card--stat {
+        .card__stat-value {
+            font-size: font-size(3xl);
+            font-weight: 700;
+            color: var(--color-text);
+            line-height: 1.2;
+        }
+
+        .card__stat-label {
+            font-size: font-size(sm);
+            color: var(--color-text-muted);
+            margin-top: spacing(1);
+        }
+
+        .card__stat-change {
+            font-size: font-size(xs);
+            font-weight: 500;
+            margin-top: spacing(2);
+            display: inline-flex;
+            align-items: center;
+            gap: spacing(1);
+
+            &--up {
+                color: var(--color-success);
+            }
+
+            &--down {
+                color: var(--color-danger);
+            }
+        }
+    }
+
+    // Pricing card
+    .card--pricing {
+        text-align: center;
+        position: relative;
+
+        &.card--featured {
+            border-color: var(--color-primary);
+            box-shadow: var(--shadow-lg);
+
+            .card__badge {
+                position: absolute;
+                top: 0;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        .card__price {
+            font-size: font-size(4xl);
+            font-weight: 700;
+            color: var(--color-text);
+            margin: spacing(4) 0;
+
+            span {
+                font-size: font-size(base);
+                font-weight: 400;
+                color: var(--color-text-muted);
+            }
+        }
+
+        .card__features {
+            text-align: left;
+            margin: spacing(5) 0;
+            display: flex;
+            flex-direction: column;
+            gap: spacing(2);
+
+            li {
+                font-size: font-size(sm);
+                color: var(--color-text);
+                display: flex;
+                align-items: center;
+                gap: spacing(2);
+
+                &::before {
+                    content: "✓";
+                    color: var(--color-success);
+                    font-weight: 700;
+                }
+            }
+        }
+    }
+
+    // Container query example for cards
+    @container (min-width: 320px) {
+        .card--profile {
+            .card__body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+}

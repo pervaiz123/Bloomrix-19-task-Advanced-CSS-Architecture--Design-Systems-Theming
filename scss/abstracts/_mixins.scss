@@ -1,0 +1,49 @@
+@use "sass:map";
+@use "variables" as *;
+@use "functions" as *;
+
+// Responsive breakpoint mixin
+@mixin respond-to($breakpoint) {
+    @if map.has-key($breakpoints, $breakpoint) {
+        @media (min-width: map.get($breakpoints, $breakpoint)) {
+            @content;
+        }
+    }
+
+    @else {
+        @error "Unknown breakpoint `#{$breakpoint}`.";
+    }
+}
+
+// Flex centering
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+// Truncate text
+@mixin truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// Focus ring
+@mixin focus-ring {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+// Visually hidden (a11y)
+@mixin visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

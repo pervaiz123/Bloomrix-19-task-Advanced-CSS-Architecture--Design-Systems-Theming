@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Design System — Component Library</title>
+    <link rel="stylesheet" href="css/design-system.css" />
+    <style>
+      .demo-section {
+        margin-bottom: 4rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--color-border);
+      }
+      .demo-section:last-child {
+        border-bottom: none;
+      }
+      .demo-title {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+      .demo-desc {
+        color: var(--color-text-muted);
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+      }
+      .demo-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        align-items: center;
+      }
+      .demo-label {
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--color-text-muted);
+        margin-bottom: 0.5rem;
+      }
+      .demo-code {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0.375rem;
+        padding: 0.75rem 1rem;
+        overflow-x: auto;
+        margin-top: 0.75rem;
+        color: var(--color-text-muted);
+      }
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: var(--color-surface);
+        border-bottom: 1px solid var(--color-border);
+        padding: 0.75rem 0;
+        margin-bottom: 2rem;
+      }
+      .site-header .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .site-logo {
+        font-weight: 700;
+        font-size: 1.125rem;
+        color: var(--color-text);
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        font-size: 0.875rem;
+      }
+      .nav-links a {
+        color: var(--color-text-muted);
+        text-decoration: none;
+      }
+      .nav-links a:hover {
+        color: var(--color-primary);
+      }
+      #theme-toggle {
+        font-size: 0.875rem;
+        padding: 0.375rem 0.75rem;
+        border-radius: 0.375rem;
+        border: 1px solid var(--color-border);
+        background: var(--color-surface);
+        color: var(--color-text);
+        cursor: pointer;
+      }
+      #theme-toggle:hover {
+        border-color: var(--color-primary);
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="site-logo">Aurora UI</div>
+        <nav class="nav-links">
+          <a href="#tokens">Tokens</a>
+          <a href="#typography">Typography</a>
+          <a href="#buttons">Buttons</a>
+          <a href="#forms">Forms</a>
+          <a href="#cards">Cards</a>
+          <a href="#feedback">Feedback</a>
+          <a href="#overlay">Overlay</a>
+        </nav>
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-pressed="false"
+          onclick="DSTheme.toggleTheme()"
+        >
+          🌙 Dark
+        </button>
+      </div>
+    </header>
+
+    <main class="container" style="padding-bottom: 4rem">
+      <h1 class="heading-1 mb-2">Aurora Design System</h1>
+      <p class="text-muted mb-8">
+        A production-ready component library built for consistency,
+        accessibility, and long-term maintainability across products.
+      </p>
+
+      <!-- TOKENS -->
+      <section id="tokens" class="demo-section">
+        <h2 class="demo-title">Design Tokens</h2>
+        <p class="demo-desc">
+          Foundational values that drive color, spacing, radius, and elevation
+          throughout the system.
+        </p>
+
+        <div class="demo-label">Color Palette</div>
+        <div class="demo-row mb-4" style="gap: 1rem">
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-primary);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">primary</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-secondary);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">secondary</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-accent);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">accent</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-success);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">success</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-warning);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">warning</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-danger);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">danger</span>
+          </div>
+          <div style="text-align: center">
+            <div
+              style="
+                width: 3rem;
+                height: 3rem;
+                border-radius: 0.5rem;
+                background: var(--color-info);
+                border: 1px solid var(--color-border);
+              "
+            ></div>
+            <span class="caption">info</span>
+          </div>
+        </div>
+
+        <div class="demo-label">Surfaces</div>
+        <div class="demo-row mb-4">
+          <div
+            style="
+              padding: 1rem 1.5rem;
+              background: var(--color-background);
+              border: 1px solid var(--color-border);
+              border-radius: 0.5rem;
+            "
+          >
+            background
+          </div>
+          <div
+            style="
+              padding: 1rem 1.5rem;
+              background: var(--color-surface);
+              border: 1px solid var(--color-border);
+              border-radius: 0.5rem;
+            "
+          >
+            surface
+          </div>
+          <div
+            style="
+              padding: 1rem 1.5rem;
+              background: var(--color-surface-elevated);
+              border: 1px solid var(--color-border);
+              border-radius: 0.5rem;
+              box-shadow: var(--shadow-md);
+            "
+          >
+            elevated
+          </div>
+        </div>
+      </section>
+
+      <!-- TYPOGRAPHY -->
+      <section id="typography" class="demo-section">
+        <h2 class="demo-title">Typography</h2>
+        <p class="demo-desc">
+          A clear type scale designed for hierarchy and readability.
+        </p>
+
+        <div class="stack stack--sm">
+          <h1 class="heading-1">Heading 1</h1>
+          <h2 class="heading-2">Heading 2</h2>
+          <h3 class="heading-3">Heading 3</h3>
+          <h4 class="heading-4">Heading 4</h4>
+          <h5 class="heading-5">Heading 5</h5>
+          <h6 class="heading-6">Heading 6</h6>
+          <p class="body">
+            Body text provides the primary reading experience across interfaces
+            and documentation.
+          </p>
+          <p class="label">Label text</p>
+          <p class="caption">Caption text for secondary details</p>
+          <p class="text-muted">
+            Muted text for supporting information and metadata.
+          </p>
+          <p><a href="#" class="link">Interactive link</a></p>
+          <blockquote class="blockquote">
+            “Clarity and consistency form the foundation of every strong
+            interface.”
+          </blockquote>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
+      <section id="buttons" class="demo-section">
+        <h2 class="demo-title">Buttons</h2>
+        <p class="demo-desc">
+          Primary actions, secondary options, and status-driven variants with
+          size and state support.
+        </p>
+
+        <div class="demo-label">Variants</div>
+        <div class="demo-row mb-4">
+          <button class="btn btn--primary btn--md">Primary</button>
+          <button class="btn btn--secondary btn--md">Secondary</button>
+          <button class="btn btn--outline btn--md">Outline</button>
+          <button class="btn btn--ghost btn--md">Ghost</button>
+          <button class="btn btn--danger btn--md">Danger</button>
+          <button class="btn btn--success btn--md">Success</button>
+        </div>
+
+        <div class="demo-label">Sizes</div>
+        <div class="demo-row mb-4">
+          <button class="btn btn--primary btn--sm">Small</button>
+          <button class="btn btn--primary btn--md">Medium</button>
+          <button class="btn btn--primary btn--lg">Large</button>
+        </div>
+
+        <div class="demo-label">States</div>
+        <div class="demo-row">
+          <button class="btn btn--primary btn--md" disabled>Disabled</button>
+          <button class="btn btn--primary btn--md btn--loading">Loading</button>
+          <button class="btn btn--outline btn--md btn--loading">
+            Loading Outline
+          </button>
+        </div>
+
+        <div class="demo-code">
+          .btn .btn--primary .btn--md<br />.btn .btn--outline .btn--lg<br />.btn
+          .btn--danger .btn--sm .btn--loading
+        </div>
+      </section>
+
+      <!-- FORMS -->
+      <section id="forms" class="demo-section">
+        <h2 class="demo-title">Form Components</h2>
+        <p class="demo-desc">
+          Complete set of inputs with validation states and accessible controls.
+        </p>
+
+        <div class="grid grid--cols-2">
+          <div class="stack">
+            <div class="form-group">
+              <label class="form-label" for="input-text">Full name</label>
+              <input
+                class="input"
+                type="text"
+                id="input-text"
+                placeholder="Enter your name"
+              />
+              <span class="form-hint"
+                >This name will appear on your profile</span
+              >
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-email">Work email</label>
+              <input
+                class="input"
+                type="email"
+                id="input-email"
+                placeholder="name@company.com"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-password">Password</label>
+              <input
+                class="input"
+                type="password"
+                id="input-password"
+                placeholder="••••••••"
+              />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-error">Project name</label>
+              <input
+                class="input input--error"
+                type="text"
+                id="input-error"
+                value="Untitled"
+              />
+              <span class="form-error">Project name is required</span>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="input-success">Team handle</label>
+              <input
+                class="input input--success"
+                type="text"
+                id="input-success"
+                value="aurora-team"
+              />
+            </div>
+          </div>
+
+          <div class="stack">
+            <div class="form-group">
+              <label class="form-label" for="textarea">Description</label>
+              <textarea
+                class="textarea"
+                id="textarea"
+                placeholder="Describe the project goals…"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="select">Department</label>
+              <select class="select" id="select">
+                <option value="">Select department</option>
+                <option>Product</option>
+                <option>Engineering</option>
+                <option>Design</option>
+                <option>Marketing</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">Preferences</span>
+              <label class="checkbox"
+                ><input type="checkbox" checked /> Email notifications</label
+              >
+              <label class="checkbox"
+                ><input type="checkbox" /> Weekly digest</label
+              >
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">Billing cycle</span>
+              <label class="radio"
+                ><input type="radio" name="plan" checked /> Monthly</label
+              >
+              <label class="radio"
+                ><input type="radio" name="plan" /> Yearly</label
+              >
+              <label class="radio"
+                ><input type="radio" name="plan" /> Custom</label
+              >
+            </div>
+
+            <div class="form-group">
+              <span class="form-label">Status</span>
+              <label class="toggle">
+                <input class="toggle__input" type="checkbox" checked />
+                <span class="toggle__track"
+                  ><span class="toggle__thumb"></span
+                ></span>
+                <span class="toggle__label">Active project</span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARDS -->
+      <section id="cards" class="demo-section">
+        <h2 class="demo-title">Cards</h2>
+        <p class="demo-desc">
+          Flexible containers for content, profiles, metrics, and pricing.
+        </p>
+
+        <div class="grid grid--cols-3 mb-6">
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">Project Overview</h3>
+              <p class="card__subtitle">Q4 roadmap summary</p>
+            </div>
+            <div class="card__body">
+              <p class="body">
+                Track milestones, ownership, and delivery status across the
+                current release cycle.
+              </p>
+            </div>
+            <div class="card__footer">
+              <button class="btn btn--primary btn--sm">View details</button>
+            </div>
+          </div>
+
+          <div class="card card--profile">
+            <div class="card__body">
+              <div
+                class="card__avatar"
+                style="
+                  background: var(--color-primary);
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  color: var(--color-primary-contrast);
+                  font-weight: 700;
+                  font-size: 1.5rem;
+                "
+              >
+                AK
+              </div>
+              <div class="card__name">Amina Khan</div>
+              <div class="card__role">Senior Product Designer</div>
+              <p class="card__bio">
+                Focused on design systems, accessibility, and cross-platform
+                consistency.
+              </p>
+              <div class="cluster mt-4" style="justify-content: center">
+                <button class="btn btn--primary btn--sm">Connect</button>
+                <button class="btn btn--outline btn--sm">Message</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--stat">
+            <div class="card__body">
+              <div class="card__stat-value">18.6k</div>
+              <div class="card__stat-label">Monthly active users</div>
+              <div class="card__stat-change card__stat-change--up">
+                ↑ 8.4% vs last month
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid--cols-3">
+          <div class="card card--pricing">
+            <div class="card__body">
+              <h3 class="card__title">Starter</h3>
+              <div class="card__price">$12<span>/mo</span></div>
+              <ul class="card__features">
+                <li>Up to 5 team members</li>
+                <li>Core analytics</li>
+                <li>Standard support</li>
+              </ul>
+              <button class="btn btn--outline btn--md w-full">
+                Start free trial
+              </button>
+            </div>
+          </div>
+
+          <div class="card card--pricing card--featured">
+            <span class="badge badge--primary card__badge">Recommended</span>
+            <div class="card__body">
+              <h3 class="card__title">Professional</h3>
+              <div class="card__price">$39<span>/mo</span></div>
+              <ul class="card__features">
+                <li>Unlimited members</li>
+                <li>Advanced reporting</li>
+                <li>Priority support</li>
+                <li>Custom branding</li>
+              </ul>
+              <button class="btn btn--primary btn--md w-full">
+                Start free trial
+              </button>
+            </div>
+          </div>
+
+          <div class="card card--pricing">
+            <div class="card__body">
+              <h3 class="card__title">Enterprise</h3>
+              <div class="card__price">$99<span>/mo</span></div>
+              <ul class="card__features">
+                <li>Everything in Professional</li>
+                <li>SSO & advanced security</li>
+                <li>Dedicated success manager</li>
+                <li>SLA & custom contracts</li>
+              </ul>
+              <button class="btn btn--outline btn--md w-full">
+                Contact sales
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEEDBACK -->
+      <section id="feedback" class="demo-section">
+        <h2 class="demo-title">Alerts, Badges & Progress</h2>
+        <p class="demo-desc">
+          Status communication and progress indicators for user feedback.
+        </p>
+
+        <div class="demo-label">Alerts</div>
+        <div class="stack mb-6">
+          <div class="alert alert--info">
+            <div class="alert__content">
+              <div class="alert__title">Update available</div>
+              Version 2.4 is ready. Review the changelog before deploying.
+            </div>
+          </div>
+          <div class="alert alert--success">
+            <div class="alert__content">
+              <div class="alert__title">Changes saved</div>
+              Your workspace settings have been updated successfully.
+            </div>
+          </div>
+          <div class="alert alert--warning">
+            <div class="alert__content">
+              <div class="alert__title">Approaching limit</div>
+              You have used 85% of your monthly API quota.
+            </div>
+          </div>
+          <div class="alert alert--danger">
+            <div class="alert__content">
+              <div class="alert__title">Payment failed</div>
+              We could not process the latest invoice. Please update your
+              billing method.
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-label">Badges</div>
+        <div class="demo-row mb-6">
+          <span class="badge badge--primary">Primary</span>
+          <span class="badge badge--secondary">Secondary</span>
+          <span class="badge badge--success">Success</span>
+          <span class="badge badge--warning">Warning</span>
+          <span class="badge badge--danger">Danger</span>
+          <span class="badge badge--info">Info</span>
+          <span class="badge badge--outline">Outline</span>
+          <span class="badge badge--primary badge--count">5</span>
+          <span class="badge badge--danger badge--dot"></span>
+        </div>
+
+        <div class="demo-label">Progress bars</div>
+        <div class="stack stack--sm" style="max-width: 24rem">
+          <div class="progress">
+            <div class="progress__bar" style="width: 35%"></div>
+          </div>
+          <div class="progress progress--success">
+            <div class="progress__bar" style="width: 72%"></div>
+          </div>
+          <div class="progress progress--warning">
+            <div class="progress__bar" style="width: 48%"></div>
+          </div>
+          <div class="progress progress--danger progress--lg">
+            <div class="progress__bar" style="width: 91%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OVERLAY -->
+      <section id="overlay" class="demo-section">
+        <h2 class="demo-title">Tooltips & Modal</h2>
+        <p class="demo-desc">
+          Contextual help and focused dialogs for critical actions.
+        </p>
+
+        <div class="demo-label">Tooltip</div>
+        <div class="demo-row mb-6">
+          <span class="tooltip">
+            <button class="btn btn--outline btn--sm">Hover for details</button>
+            <span class="tooltip__content"
+              >Additional context appears here</span
+            >
+          </span>
+        </div>
+
+        <div class="demo-label">Modal</div>
+        <button
+          class="btn btn--primary btn--md"
+          onclick="
+            document.getElementById('demo-modal').classList.add('is-open')
+          "
+        >
+          Open confirmation
+        </button>
+
+        <div
+          class="modal"
+          id="demo-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="modal-title"
+        >
+          <div
+            class="modal__backdrop"
+            onclick="
+              document.getElementById('demo-modal').classList.remove('is-open')
+            "
+          ></div>
+          <div class="modal__dialog">
+            <div class="modal__header">
+              <h3 class="modal__title" id="modal-title">Archive project</h3>
+              <button
+                class="modal__close"
+                type="button"
+                aria-label="Close"
+                onclick="
+                  document
+                    .getElementById('demo-modal')
+                    .classList.remove('is-open')
+                "
+              >
+                ✕
+              </button>
+            </div>
+            <div class="modal__body">
+              <p>
+                This project will be moved to the archive. You can restore it
+                later from the archive view.
+              </p>
+            </div>
+            <div class="modal__footer">
+              <button
+                class="btn btn--ghost btn--md"
+                onclick="
+                  document
+                    .getElementById('demo-modal')
+                    .classList.remove('is-open')
+                "
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn--danger btn--md"
+                onclick="
+                  document
+                    .getElementById('demo-modal')
+                    .classList.remove('is-open')
+                "
+              >
+                Archive
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer
+        class="mt-8 pt-6"
+        style="border-top: 1px solid var(--color-border)"
+      >
+        <p class="caption text-muted">Aurora Design System</p>
+      </footer>
+    </main>
+
+    <script src="js/theme.js"></script>
+  </body>
+</html>

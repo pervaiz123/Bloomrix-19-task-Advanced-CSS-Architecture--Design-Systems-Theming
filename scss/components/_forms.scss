@@ -1,0 +1,172 @@
+@use "../abstracts" as *;
+
+@layer components {
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: spacing(1);
+    }
+
+    .form-label {
+        font-size: font-size(sm);
+        font-weight: 500;
+        color: var(--color-text);
+    }
+
+    .form-hint {
+        font-size: font-size(xs);
+        color: var(--color-text-muted);
+    }
+
+    .form-error {
+        font-size: font-size(xs);
+        color: var(--color-danger);
+    }
+
+    .input,
+    .textarea,
+    .select {
+        width: 100%;
+        padding: spacing(2) spacing(3);
+        font-size: font-size(sm);
+        color: var(--color-text);
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: radius(md);
+        transition: border-color var(--transition-base), box-shadow var(--transition-base);
+
+        &::placeholder {
+            color: var(--color-text-muted);
+        }
+
+        &:hover:not(:disabled):not(:focus) {
+            border-color: var(--color-border-strong);
+        }
+
+        &:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 25%, transparent);
+        }
+
+        &:disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            background-color: var(--color-background);
+        }
+
+        // Validation states
+        &--error {
+            border-color: var(--color-danger);
+
+            &:focus {
+                border-color: var(--color-danger);
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-danger) 25%, transparent);
+            }
+        }
+
+        &--success {
+            border-color: var(--color-success);
+
+            &:focus {
+                border-color: var(--color-success);
+                box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-success) 25%, transparent);
+            }
+        }
+    }
+
+    .textarea {
+        min-height: 6rem;
+        resize: vertical;
+    }
+
+    .select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right spacing(3) center;
+        padding-right: spacing(8);
+    }
+
+    // Checkbox & Radio
+    .checkbox,
+    .radio {
+        display: inline-flex;
+        align-items: center;
+        gap: spacing(2);
+        cursor: pointer;
+        font-size: font-size(sm);
+
+        input {
+            width: 1.125rem;
+            height: 1.125rem;
+            accent-color: var(--color-primary);
+            cursor: pointer;
+
+            &:disabled {
+                cursor: not-allowed;
+                opacity: 0.55;
+            }
+        }
+    }
+
+    .radio input {
+        border-radius: 50%;
+    }
+
+    // Toggle switch
+    .toggle {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: spacing(2);
+        cursor: pointer;
+
+        &__input {
+            @include visually-hidden;
+
+            &:checked+.toggle__track {
+                background-color: var(--color-primary);
+
+                .toggle__thumb {
+                    transform: translateX(1.25rem);
+                }
+            }
+
+            &:focus-visible+.toggle__track {
+                @include focus-ring;
+            }
+
+            &:disabled+.toggle__track {
+                opacity: 0.55;
+                cursor: not-allowed;
+            }
+        }
+
+        &__track {
+            width: 2.5rem;
+            height: 1.25rem;
+            background-color: var(--color-border-strong);
+            border-radius: radius(full);
+            transition: background-color var(--transition-base);
+            position: relative;
+        }
+
+        &__thumb {
+            position: absolute;
+            top: 0.125rem;
+            left: 0.125rem;
+            width: 1rem;
+            height: 1rem;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform var(--transition-base);
+            box-shadow: var(--shadow-sm);
+        }
+
+        &__label {
+            font-size: font-size(sm);
+            color: var(--color-text);
+        }
+    }
+}

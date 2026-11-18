@@ -1,0 +1,143 @@
+@use "../abstracts" as *;
+
+@layer components {
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: spacing(2);
+        font-weight: 500;
+        font-size: font-size(sm);
+        line-height: 1.25;
+        border-radius: radius(md);
+        border: 1px solid transparent;
+        cursor: pointer;
+        transition: background-color var(--transition-base),
+            border-color var(--transition-base),
+            color var(--transition-base),
+            box-shadow var(--transition-base);
+        white-space: nowrap;
+        user-select: none;
+
+        &:focus-visible {
+            @include focus-ring;
+        }
+
+        &:disabled,
+        &.btn--disabled {
+            opacity: 0.55;
+            cursor: not-allowed;
+            pointer-events: none;
+        }
+
+        // Sizes
+        &--sm {
+            padding: spacing(1) spacing(3);
+            font-size: font-size(xs);
+            border-radius: radius(sm);
+        }
+
+        &--md {
+            padding: spacing(2) spacing(4);
+            font-size: font-size(sm);
+        }
+
+        &--lg {
+            padding: spacing(3) spacing(6);
+            font-size: font-size(base);
+            border-radius: radius(lg);
+        }
+
+        // Variants
+        &--primary {
+            background-color: var(--color-primary);
+            color: var(--color-primary-contrast);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-primary-hover);
+            }
+
+            &:active:not(:disabled) {
+                background-color: var(--color-primary-active);
+            }
+        }
+
+        &--secondary {
+            background-color: var(--color-secondary);
+            color: var(--color-secondary-contrast);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-secondary-hover);
+            }
+        }
+
+        &--outline {
+            background-color: transparent;
+            border-color: var(--color-border-strong);
+            color: var(--color-text);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-surface);
+                border-color: var(--color-primary);
+                color: var(--color-primary);
+            }
+        }
+
+        &--ghost {
+            background-color: transparent;
+            color: var(--color-text);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-surface);
+            }
+        }
+
+        &--danger {
+            background-color: var(--color-danger);
+            color: var(--color-danger-contrast);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-danger-hover);
+            }
+        }
+
+        &--success {
+            background-color: var(--color-success);
+            color: var(--color-success-contrast);
+
+            &:hover:not(:disabled) {
+                background-color: var(--color-success-hover);
+            }
+        }
+
+        // Loading state
+        &--loading {
+            position: relative;
+            color: transparent !important;
+            pointer-events: none;
+
+            &::after {
+                content: "";
+                position: absolute;
+                width: 1em;
+                height: 1em;
+                border: 2px solid currentColor;
+                border-right-color: transparent;
+                border-radius: 50%;
+                animation: btn-spin 0.6s linear infinite;
+                color: var(--color-primary-contrast);
+            }
+
+            &.btn--outline::after,
+            &.btn--ghost::after {
+                color: var(--color-text);
+            }
+        }
+    }
+
+    @keyframes btn-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+}
