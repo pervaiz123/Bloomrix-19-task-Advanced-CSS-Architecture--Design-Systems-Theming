@@ -1,11 +1,8 @@
-// Design System - Main Entry
-// Cascade layer order MUST be declared first
-
-@layer reset, base, themes, layout, components, utilities;
-
 @use "abstracts";
 @use "themes";
 @use "base";
 @use "layout";
 @use "components";
 @use "utilities";
+
+@layer reset, base, themes, layout, components, utilities;
